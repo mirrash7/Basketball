@@ -1,0 +1,209 @@
+🏀 BASKETBALL ANALYSIS - COMMANDS GUIDE
+=============================================
+
+This guide shows all available commands and overlay options for the basketball video analysis system.
+
+📋 BASIC USAGE
+==============
+
+Basic command structure:
+python main.py <input_video> [options]
+
+Example:
+python main.py input_videos/video_1.mp4 --output_video output_videos/my_analysis.avi
+
+🎛️ OVERLAY CONTROL OPTIONS
+===========================
+
+Each overlay can be toggled on/off using these flags:
+
+✅ ENABLE OVERLAYS (default: all enabled)
+--show_player_tracks          # Player bounding boxes and IDs
+--show_ball_tracks            # Ball trajectory visualization  
+--show_court_keypoints        # Court lines and key points
+--show_frame_number           # Current frame counter
+--show_team_ball_control      # Ball possession indicators
+--show_passes_interceptions   # Pass and interception arrows
+--show_speed_distance         # Player speed and distance metrics
+--show_tactical_view          # Overhead tactical view
+
+❌ DISABLE OVERLAYS
+--no_player_tracks            # Hide player bounding boxes and IDs
+--no_ball_tracks              # Hide ball trajectory
+--no_court_keypoints          # Hide court lines and key points
+--no_frame_number             # Hide frame counter
+--no_team_ball_control        # Hide ball possession indicators
+--no_passes_interceptions     # Hide pass and interception arrows
+--no_speed_distance           # Hide speed and distance metrics
+--no_tactical_view            # Hide tactical overhead view
+
+🎯 PRESET CONFIGURATIONS
+========================
+
+Use predefined configurations for different use cases:
+
+--preset default              # Show everything (default behavior)
+--preset minimal              # Basic tracking only
+--preset coaching             # Tactical analysis focus
+--preset performance          # Player metrics focus
+--preset broadcast            # Clean, professional look
+--preset debug                # Full visualization for development
+
+📁 FILE AND PATH OPTIONS
+========================
+
+--output_video <path>         # Specify output video path
+--stub_path <path>           # Specify cache directory path
+
+💡 EXAMPLE COMMANDS
+===================
+
+🔹 BASIC ANALYSIS (all overlays enabled)
+python main.py input_videos/video_1.mp4 --output_video output_videos/full_analysis.avi
+
+🔹 MINIMAL TRACKING (just players and ball)
+python main.py input_videos/video_1.mp4 --preset minimal
+
+🔹 COACHING ANALYSIS (tactical focus)
+python main.py input_videos/video_1.mp4 --preset coaching
+
+🔹 PERFORMANCE ANALYSIS (metrics focus)
+python main.py input_videos/video_1.mp4 --preset performance
+
+🔹 BROADCAST STYLE (clean, professional)
+python main.py input_videos/video_1.mp4 --preset broadcast
+
+🔹 CUSTOM COMBINATION (mix and match)
+python main.py input_videos/video_1.mp4 --show_player_tracks --show_ball_tracks --no_tactical_view --no_speed_distance
+
+🔹 DEBUG MODE (everything enabled)
+python main.py input_videos/video_1.mp4 --preset debug
+
+🔹 MINIMAL WITH FRAME NUMBERS
+python main.py input_videos/video_1.mp4 --preset minimal --show_frame_number
+
+🔹 COACHING WITHOUT TACTICAL VIEW
+python main.py input_videos/video_1.mp4 --preset coaching --no_tactical_view
+
+🔹 PERFORMANCE WITH BALL TRACKING
+python main.py input_videos/video_1.mp4 --preset performance --show_ball_tracks
+
+🔹 CUSTOM OUTPUT PATH
+python main.py input_videos/video_1.mp4 --output_video my_custom_output/analysis.avi
+
+🔹 CUSTOM CACHE PATH
+python main.py input_videos/video_1.mp4 --stub_path my_cache_folder
+
+🔹 COMPLETE CUSTOM EXAMPLE
+python main.py input_videos/video_1.mp4 --output_video output_videos/custom_analysis.avi --show_player_tracks --show_ball_tracks --show_court_keypoints --show_frame_number --no_team_ball_control --no_passes_interceptions --no_speed_distance --no_tactical_view
+
+🎯 PRESET DETAILS
+=================
+
+DEFAULT PRESET:
+✅ Player tracks, ball tracks, court keypoints, frame numbers
+✅ Team ball control, passes/interceptions, speed/distance, tactical view
+
+MINIMAL PRESET:
+✅ Player tracks, ball tracks
+❌ Court keypoints, frame numbers, team ball control, passes/interceptions, speed/distance, tactical view
+
+COACHING PRESET:
+✅ Player tracks, ball tracks, court keypoints, team ball control, passes/interceptions, tactical view
+❌ Frame numbers, speed/distance
+
+PERFORMANCE PRESET:
+✅ Player tracks, frame numbers, speed/distance, tactical view
+❌ Ball tracks, court keypoints, team ball control, passes/interceptions
+
+BROADCAST PRESET:
+✅ Ball tracks, court keypoints, team ball control, passes/interceptions
+❌ Player tracks, frame numbers, speed/distance, tactical view
+
+DEBUG PRESET:
+✅ Everything enabled (same as default)
+
+📊 OVERLAY DESCRIPTIONS
+=======================
+
+PLAYER TRACKS:
+- Shows bounding boxes around detected players
+- Displays unique player IDs
+- Color-coded by team (white vs dark blue)
+
+BALL TRACKS:
+- Shows ball trajectory across frames
+- Visualizes ball movement path
+- Helps track ball possession
+
+COURT KEYPOINTS:
+- Displays detected court lines and key points
+- Shows court boundaries and markings
+- Essential for tactical analysis
+
+FRAME NUMBER:
+- Shows current frame counter
+- Useful for timing analysis
+- Helps with video synchronization
+
+TEAM BALL CONTROL:
+- Indicates which team has possession
+- Shows possession changes
+- Color-coded team indicators
+
+PASSES/INTERCEPTIONS:
+- Arrows showing pass directions
+- Different colors for passes vs interceptions
+- Helps analyze game events
+
+SPEED/DISTANCE:
+- Real-time player speed in m/s
+- Distance covered by players
+- Performance metrics overlay
+
+TACTICAL VIEW:
+- Overhead court view
+- Player positions from bird's eye view
+- Tactical analysis perspective
+
+🚀 QUICK START EXAMPLES
+=======================
+
+1. First time user (full analysis):
+python main.py input_videos/video_1.mp4
+
+2. Quick player tracking only:
+python main.py input_videos/video_1.mp4 --preset minimal
+
+3. Coaching session analysis:
+python main.py input_videos/video_1.mp4 --preset coaching
+
+4. Performance evaluation:
+python main.py input_videos/video_1.mp4 --preset performance
+
+5. Professional presentation:
+python main.py input_videos/video_1.mp4 --preset broadcast
+
+🔧 TROUBLESHOOTING
+==================
+
+If you get errors:
+1. Make sure input video exists in input_videos/ folder
+2. Ensure output_videos/ folder exists
+3. Check that models are in models/ folder
+4. Try with --preset minimal first
+
+For help with presets:
+python show_presets.py
+
+📝 NOTES
+========
+
+- All overlays are enabled by default
+- Use --preset to quickly switch between common configurations
+- Individual flags override preset settings
+- Cache files (stubs) speed up repeated processing
+- Output video preserves original frame rate
+- System auto-enables player tracks if no overlays are selected
+
+🎮 HAPPY ANALYZING! 🏀 
